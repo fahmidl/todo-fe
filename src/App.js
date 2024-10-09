@@ -4,6 +4,15 @@ import TodoList from "./components/TodoList";
 import { Container, TextField, Button, Typography, Box } from "@mui/material";
 
 const backendUrl = process.env.REACT_APP_BACKEND_URL;
+console.log('Backend URL:', backendUrl);
+
+axios.get(`${backendUrl}/todos`)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('Error fetching todos', error);
+  });
 
 function App() {
   const [todos, setTodos] = useState([]);
